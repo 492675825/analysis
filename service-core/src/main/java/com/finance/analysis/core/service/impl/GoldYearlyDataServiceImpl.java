@@ -15,7 +15,7 @@ public class GoldYearlyDataServiceImpl extends ServiceImpl<GoldYearlyDataMapper,
     @Override
     public List<Map<String, Object>> yearlyData() {
         QueryWrapper<GoldData> wrapper = new QueryWrapper<>();
-        wrapper.select("year_number, sum(mapping) as totalCount");
+        wrapper.select("year_number, sum(mapping) as totalCount, avg(mapping) as averageCount");
         wrapper.groupBy("year_number");
         wrapper.orderByDesc("year_number");
         List<Map<String, Object>> list = listMaps(wrapper);
