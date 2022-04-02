@@ -17,4 +17,8 @@ public class GoldData {
     private String close;
     private String upOrDown;
     private Integer mapping;
+    private String yearNumber;
+    private String monthNumber;
+    private String dayNumber;
+    private String dateNumber;
 }
