@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.finance.analysis.core.mapper.GoldDailyDataMapper">
+    <select id="selectMaxVersionDate" resultType="com.finance.analysis.core.pojo.entity.GoldData">
+        select version_date, close, up_or_down, mapping
+        from tbl_au_td_gold_data_analysis
+        where version_date = (select max(version_date) from tbl_au_td_gold_data_analysis)
+    </select>
 
 </mapper>

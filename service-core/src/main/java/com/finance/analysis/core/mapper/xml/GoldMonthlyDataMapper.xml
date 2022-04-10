@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.finance.analysis.core.mapper.GoldMonthlyDataMapper">
-
+    <select id="selectMonthData" resultType="com.finance.analysis.core.pojo.entity.GoldMonthlyData">
+        select month_number, current_sum_mapping, history_average_mapping, history_sum_mapping
+        from tbl_m_au_td_gold_data_mapping
+        order by month_number;
+    </select>
 </mapper>

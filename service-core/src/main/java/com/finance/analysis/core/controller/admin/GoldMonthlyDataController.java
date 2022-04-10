@@ -28,4 +28,13 @@ public class GoldMonthlyDataController {
         context.put("data",goldMonthlyDataService.groupbyData());
         return context;
     }
+
+    @GetMapping("/line_data")
+    public Map<String, Object> lineData(){
+        Map<String, Object> context = new HashMap<>();
+        context.put("code",0);
+        context.put("msg","success");
+        context.put("data", goldMonthlyDataService.selectMonthData());
+        return context;
+    }
 }
