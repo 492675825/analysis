@@ -4,6 +4,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
 @Data
+//黄金价格下载
 public class ExcelDTO {
     @ExcelProperty("id")
     private Long id;

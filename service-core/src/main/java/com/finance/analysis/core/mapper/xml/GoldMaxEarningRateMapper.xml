@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finance.analysis.core.mapper.GoldMaxEarningRateMapper">
+    <select id="maxEarningRate" resultType="com.finance.analysis.core.pojo.entity.GoldMaxEarningRate">
+        with temp as (
+            select year_number,
+            (max(close)-min(close))/min(close) as max_earning_rate
+            from tbl_au_td_gold_data_analysis
+            group by year_number
+            order by year_number desc
+            )
+            select year_number,
+                   max_earning_rate,
+                   avg(max_earning_rate) over() as average_earning_rate
+            from temp
+            order by year_number desc;
+    </select>
+
+</mapper>
