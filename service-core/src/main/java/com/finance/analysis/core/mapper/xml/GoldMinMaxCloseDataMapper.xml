@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finance.analysis.core.mapper.GoldMinMaxCloseDataMapper">
+    <select id="minMaxClose" resultType="com.finance.analysis.core.pojo.entity.GoldMinMaxCloseData">
+         with temp as (
+            select
+            year_number, min(close) as min_close, max(close) as max_close
+            from tbl_au_td_gold_data_analysis
+            group by year_number
+            order by year_number desc
+            )
+
+        select
+            a.year_number,
+            a.min_close,
+            b.version_date as min_close_version_date,
+            b.month_number as min_close_month,
+            a.max_close,
+            c.version_date as max_close_version_date,
+            c.month_number as max_close_month
+        from temp a
+        left join tbl_au_td_gold_data_analysis b
+        on a.year_number = b.year_number
+        and a.min_close = b.close
+        left join tbl_au_td_gold_data_analysis c
+        on a.year_number = c.year_number
+        and a.max_close = c.close;
+    </select>
+
+</mapper>

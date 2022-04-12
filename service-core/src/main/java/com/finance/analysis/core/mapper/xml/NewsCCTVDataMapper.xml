@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finance.analysis.core.mapper.NewsCCTVDataMapper">
+    <select id="newsCCTVData" resultType="com.finance.analysis.core.pojo.entity.NewsCCTVData">
+        select * from tbl_d_news_cctv_union_all
+        order by version_date;
+    </select>
+
+    <select id="selectByDate" resultType="com.finance.analysis.core.pojo.entity.NewsCCTVData">
+        select * from tbl_d_news_cctv_union_all
+        where version_date like concat('%',#{selectDate},'%');
+    </select>
+
+</mapper>
