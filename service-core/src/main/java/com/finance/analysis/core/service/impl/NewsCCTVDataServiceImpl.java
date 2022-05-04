@@ -32,4 +32,16 @@ public class NewsCCTVDataServiceImpl extends ServiceImpl<NewsCCTVDataMapper, New
         List<NewsCCTVData> list = newsCCTVDataMapper.selectByDate(selectDate);
         return list;
     }
+
+    @Override
+    public List<NewsCCTVData> selectByNewsType(String news_type) {
+        List<NewsCCTVData> list = newsCCTVDataMapper.selectByNewsType(news_type);
+        return list;
+    }
+
+    @Override
+    public List<NewsCCTVData> selectByDateAndType(String select_date, String select_type) {
+        List<NewsCCTVData> list = newsCCTVDataMapper.selectByDataAndType(select_date, select_type);
+        return list;
+    }
 }

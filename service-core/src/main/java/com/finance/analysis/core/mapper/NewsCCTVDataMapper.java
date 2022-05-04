@@ -12,4 +12,8 @@ public interface NewsCCTVDataMapper extends BaseMapper<NewsCCTVData> {
     List<NewsCCTVData> newsCCTVData();
 
     List<NewsCCTVData> selectByDate(String selectDate);
+
+    List<NewsCCTVData> selectByNewsType(String news_type);
+
+    List<NewsCCTVData> selectByDataAndType(String select_date, String select_type);
 }

@@ -11,4 +11,14 @@
         where version_date like concat('%',#{selectDate},'%');
     </select>
 
+    <select id="selectByNewsType" resultType="com.finance.analysis.core.pojo.entity.NewsCCTVData">
+        select * from tbl_d_news_cctv_union_all
+        where news_type=#{news_type};
+    </select>
+
+    <select id="selectByDataAndType" resultType="com.finance.analysis.core.pojo.entity.NewsCCTVData">
+        select * from tbl_d_news_cctv_union_all
+        where version_date like concat('%',#{select_date},'%') and news_type=#{select_type};
+    </select>
+
 </mapper>

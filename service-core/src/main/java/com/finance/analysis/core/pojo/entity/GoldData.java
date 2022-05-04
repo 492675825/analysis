@@ -7,6 +7,7 @@ import lombok.Data;
 @TableName(value = "tbl_au_td_gold_data_analysis")
 public class GoldData {
 //使用该表数据tbl_au_td_gold_data_analysis
+
     private Long id;
     private String versionDate;
     private String refreshDate;
